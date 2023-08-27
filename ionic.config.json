@@ -1,0 +1,7 @@
+{
+  "name": "inventoryAppIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
