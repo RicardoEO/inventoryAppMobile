@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonMenu, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-userlogged',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userlogged.page.scss'],
 })
 export class UserloggedPage implements OnInit {
-
-  constructor() { }
+  constructor(private menuCtrl: MenuController, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  changePage(route: string) {
+    this.router.navigate([route]);
+    this.menuCtrl.close();
   }
 
 }

@@ -1,0 +1,54 @@
+ion-input {
+    min-height: auto!important;
+    height: auto!important;
+}
+
+.acordeon {
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    height: auto; /* o cualquier altura específica */
+    overflow: hidden; /* esconder el contenido si la altura se reduce a 0 */
+}
+
+.acordeon.hide {
+    opacity: 0;
+    height: 0;
+}
+
+.title {
+    position: relative;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0;
+    height: 0;
+    // ARROW DOWN
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000;
+    transform: translateY(-50%);
+}
+
+.title.active::after {
+    // ARROW RIGHT
+    transform: translateY(-50%) rotate(-90deg);
+} 
+
+.title::after, .title.active::after {
+    transition: transform 0.3s ease-in-out;
+}
+

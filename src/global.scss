@@ -24,3 +24,14 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+ion-label {
+    white-space: normal!important;
+}
+
+/* Set variables for all modes */
+:root {
+    .ion-padding {
+        padding: 1rem!important;
+    }
+}

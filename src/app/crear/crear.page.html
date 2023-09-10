@@ -1,0 +1,152 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Búsqueda de activo</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/consultar"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header class="ion-padding">
+      <ion-card-title>Crear</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid fixed class="ion-no-padding" [formGroup]="formulario">
+        <ion-row>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text>
+              <h2><strong>Marca</strong></h2>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-list>
+              <ion-item lines="full">
+                <ion-select aria-label="fruit" placeholder="Seleccione"
+                formControlName="marca">
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="oranges">Oranges</ion-select-option>
+                  <ion-select-option value="bananas">Bananas</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text>
+              <h2><strong>Modelo</strong></h2>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-list>
+              <ion-item lines="full">
+                <ion-select aria-label="fruit" placeholder="Seleccione"
+                formControlName="modelo">
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="oranges">Oranges</ion-select-option>
+                  <ion-select-option value="bananas">Bananas</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text>
+              <h2><strong>Localidad</strong></h2>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-list>
+              <ion-item lines="full">
+                <ion-select aria-label="fruit" placeholder="Seleccione"
+                formControlName="localidad">
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="oranges">Oranges</ion-select-option>
+                  <ion-select-option value="bananas">Bananas</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text>
+              <h2><strong>Serie</strong></h2>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-list>
+              <ion-item lines="full">
+                <ion-input type="text" placeholder="Ingrese serie"
+                formControlName="serie"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text>
+              <h2><strong>Año de compra</strong></h2>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-list>
+              <ion-item lines="full">
+                <ion-input type="number" placeholder="Ingrese serie"
+                formControlName="anioCompra"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text>
+              <h2><strong>Asignado a</strong></h2>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-list>
+              <ion-item lines="full">
+                <ion-input type="text" placeholder="Ingrese serie"
+                formControlName="asignado"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text>
+              <h2><strong>Cargo</strong></h2>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-list>
+              <ion-item lines="full">
+                <ion-input type="text" placeholder="Ingrese serie"
+                formControlName="cargo"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text>
+              <h2><strong>Nombre de empleado</strong></h2>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-list>
+              <ion-item lines="full">
+                <ion-input type="text" placeholder="Ingrese serie"
+                formControlName="nombreEmpleado"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button color="primary" expand="block">Limpiar</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button (click)="guardar()" color="primary" expand="block">Guardar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <pre>
+    {{ formulario.value | json }}
+    {{ formulario.status | json }}
+  </pre>
+</ion-content>

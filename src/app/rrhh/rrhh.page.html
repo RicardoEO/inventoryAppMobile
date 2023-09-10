@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>RRHH</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item lines="full" class="ion-text-right">
+  <ion-label><strong>Menu despido / renuncia</strong></ion-label>
+</ion-item>
+<ion-item lines="none">
+  <ion-searchbar animated="true" 
+  (ionInput)="handleInput($event)"
+  placeholder="Buscar colaborador"></ion-searchbar>
+</ion-item>
+
+<ng-container *ngIf="data.length > 0 else noData">
+  <ion-card *ngFor="let activo of data; let i = index">
+    <ion-card-header class="ion-no-padding-bottom">
+      <ion-card-title>Activo #{{i + 1}}</ion-card-title>
+    </ion-card-header>
+    <ion-list>
+      <ion-item lines="full">
+        <ion-label>
+          <h2><strong>Marca:</strong> {{activo.marca}}</h2>
+          <h2><strong>Modelo:</strong> {{activo.modelo}}</h2>
+          <h2><strong>Localidad:</strong> {{activo.localidad}}</h2>
+          <h2><strong>Serie:</strong> {{activo.serie}}</h2>
+          <h2><strong>Empleado:</strong> {{activo.nombreEmpleado}}</h2>
+          <h2><strong>Cargo:</strong> {{activo.cargo}}</h2>
+        </ion-label>
+      </ion-item>
+        <ion-button color="primary" (click)="despido(activo)" expand="full">DESPIDO</ion-button>
+        <ion-button (click)="renuncia(activo)" color="danger" expand="full">Renuncia</ion-button>
+    </ion-list>
+  </ion-card>
+</ng-container>
+<ng-template #noData>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Sin resultados</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ng-template>
+</ion-content>

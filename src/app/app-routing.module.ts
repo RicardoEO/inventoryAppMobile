@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'login'
+  },
+  {
+    path: 'rrhh',
+    loadChildren: () => import('./rrhh/rrhh.module').then( m => m.RrhhPageModule)
   }
 ];
 

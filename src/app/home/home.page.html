@@ -3,33 +3,54 @@
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Menu</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content>
+  <ion-item lines="none">
+    <ion-text>
+      <h1>Inventarios</h1>
+    </ion-text>
+  </ion-item>
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>Accesos rápidos</ion-card-title>
-    </ion-card-header>
     <ion-card-content>
       <ion-grid>
         <ion-row>
-          <ion-col size="6" class="ion-text-center">
-            <ion-icon name="logo-ionic" size="large"></ion-icon>
+          <ion-col class="ion-text-center" routerLink="/crear">
+            <ion-icon name="add-circle" size="large"></ion-icon>
+            <ion-item class="ion-text-center" lines="none">
+              <ion-label>Añadir / Desasignar</ion-label>
+            </ion-item>
           </ion-col>
-          <ion-col size="6" class="ion-text-center">
-            <ion-icon name="logo-ionic" size="large"></ion-icon>
+          <ion-col class="ion-text-center">
+            <ion-icon name="document-text" size="large"></ion-icon>
+            <ion-item class="ion-text-center" lines="none">
+              <ion-label>Historial de Activo</ion-label>
+            </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col size="6" class="ion-text-center">
-            <ion-icon name="logo-ionic" size="large"></ion-icon>
-          </ion-col>
-          <ion-col size="6" class="ion-text-center">
-            <ion-icon name="logo-ionic" size="large"></ion-icon>
+          <ion-col class="ion-text-center" routerLink="/rrhh">
+            <ion-icon name="bag-check" size="large"></ion-icon>
+            <ion-item class="ion-text-center" lines="none">
+              <ion-label>Solicitudes RR.HH</ion-label>
+            </ion-item>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>
   </ion-card>
+  <ion-item class="ion-text-right">
+    <ion-label><strong>Notificaciones</strong></ion-label>
+  </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-label>Notificación 1</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Notificación 2</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Notificación 3</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

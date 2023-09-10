@@ -1,0 +1,130 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Búsqueda de activo</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/crear">
+        <ion-icon color="primary" slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header class="ion-padding">
+      <div #title (click)="hide()" class="title">Filtros</div>
+    </ion-card-header>
+    <div class="acordeon" #filtro>
+      <ion-card-content class="acordeon">
+        <ion-grid fixed class="ion-no-padding" [formGroup]="formulario">
+          <ion-row>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-text>
+                <h2><strong>Marca</strong></h2>
+              </ion-text>
+            </ion-col>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-list>
+                <ion-item lines="full">
+                  <ion-select formControlName="marca" aria-label="fruit" placeholder="Seleccione">
+                    <ion-select-option value="apples">Apples</ion-select-option>
+                    <ion-select-option value="oranges">Oranges</ion-select-option>
+                    <ion-select-option value="bananas">Bananas</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-text>
+                <h2><strong>Modelo</strong></h2>
+              </ion-text>
+            </ion-col>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-list>
+                <ion-item lines="full">
+                  <ion-select aria-label="fruit" placeholder="Seleccione">
+                    <ion-select-option value="apples">Apples</ion-select-option>
+                    <ion-select-option value="oranges">Oranges</ion-select-option>
+                    <ion-select-option value="bananas">Bananas</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-text>
+                <h2><strong>Localidad</strong></h2>
+              </ion-text>
+            </ion-col>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-list>
+                <ion-item lines="full">
+                  <ion-select aria-label="fruit" placeholder="Seleccione">
+                    <ion-select-option value="apples">Apples</ion-select-option>
+                    <ion-select-option value="oranges">Oranges</ion-select-option>
+                    <ion-select-option value="bananas">Bananas</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-text>
+                <h2><strong>Serie</strong></h2>
+              </ion-text>
+            </ion-col>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-list>
+                <ion-item lines="full">
+                  <ion-input formControlName="serie" type="text" placeholder="Ingrese serie"></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button color="primary" (click)="limpiarFormulario()" expand="block">Limpiar</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button (click)="buscarData()" color="primary" expand="block">Buscar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </div>
+  </ion-card>
+
+  <ng-container *ngIf="data.length > 0 else noData">
+    <ion-card *ngFor="let activo of data; let i = index">
+      <ion-card-header class="ion-no-padding-bottom">
+        <ion-card-title>Activo #{{i + 1}}</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item lines="full">
+          <ion-label>
+            <h2><strong>Marca:</strong> {{activo.marca}}</h2>
+            <h2><strong>Modelo:</strong> {{activo.modelo}}</h2>
+            <h2><strong>Localidad:</strong> {{activo.localidad}}</h2>
+            <h2><strong>Serie:</strong> {{activo.serie}}</h2>
+            <h2><strong>Empleado:</strong> {{activo.nombreEmpleado}}</h2>
+            <h2><strong>Cargo:</strong> {{activo.cargo}}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-button color="primary" (click)="editar(activo)" expand="block">Editar</ion-button>
+          <ion-button (click)="eliminar(activo)" color="danger" expand="block">Eliminar</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ng-container>
+  <ng-template #noData>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Sin resultados</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ng-template>
+</ion-content>
