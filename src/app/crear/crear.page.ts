@@ -12,10 +12,34 @@ export class CrearPage implements OnInit {
   formulario: any;
   serie: any;
   editando: boolean = false;
+  marcas: any[] = [
+    { id: 1, nombre: 'HP' },
+    { id: 2, nombre: 'Lenovo' },
+    { id: 3, nombre: 'Dell' },
+    { id: 4, nombre: 'Apple' },
+    { id: 5, nombre: 'Asus' }
+  ]
+  modelo: any[] = [
+    { id: 1, nombre: 'Pavilion', idMarca: 1 },
+    { id: 2, nombre: 'EliteBook', idMarca: 1 },
+    { id: 3, nombre: 'ProBook', idMarca: 1 },
+    { id: 4, nombre: 'ThinkPad', idMarca: 2 },
+    { id: 5, nombre: 'ThinkBook', idMarca: 2 },
+    { id: 6, nombre: 'ThinkCentre', idMarca: 2 },
+    { id: 7, nombre: 'Latitude', idMarca: 3 },
+    { id: 8, nombre: 'Inspiron', idMarca: 3 },
+    { id: 9, nombre: 'XPS', idMarca: 3 },
+    { id: 10, nombre: 'MacBook', idMarca: 4 },
+    { id: 11, nombre: 'MacBook Air', idMarca: 4 },
+    { id: 12, nombre: 'MacBook Pro', idMarca: 4 },
+    { id: 13, nombre: 'ZenBook', idMarca: 5 },
+    { id: 14, nombre: 'VivoBook', idMarca: 5 }
+  ]
+  modeloSelect: any[] = [];
   constructor(private fb: FormBuilder,
     private alertController: AlertController,
     private router: ActivatedRoute) {
-   }
+  }
 
   ngOnInit() {
     this.crearFormulario();
@@ -24,8 +48,21 @@ export class CrearPage implements OnInit {
       if (this.serie) {
         this.editando = true;
         this.llenarFormulario();
+        this.llenarModelo();
       }
     })
+  }
+
+  llenarModelo() {
+    console.log(this.formulario.value)
+    const { id } = this.formulario.value.marca;
+    this.modeloSelect = this.modelo.filter((item: any) => item.idMarca === id);
+  }
+
+  onChange(event: any) {
+    const { id } = event.target.value;
+    this.modeloSelect = this.modelo.filter((item: any) => item.idMarca === id);
+    console.log(this.modeloSelect)
   }
 
   llenarFormulario() {
@@ -50,6 +87,10 @@ export class CrearPage implements OnInit {
     })
   }
 
+  compareFn(m1: any, m2: any): boolean {
+    return m1 && m2 ? m1.id === m2.id : m1 === m2;
+  }
+
   existeActivo(): boolean {
     const form = localStorage.getItem('formulario');
     const data = form ? JSON.parse(form) : [];
@@ -64,9 +105,9 @@ export class CrearPage implements OnInit {
         const data = JSON.parse(form);
         if(this.editando) {
           const index = data.findIndex((item: any) => item.serie === this.serie);
-          console.log(index)
           data.splice(index, 1, this.formulario.value);
           localStorage.setItem('formulario', JSON.stringify(data));
+          this.presentAlert("Activo modificado con éxito");
         } else {
           if(this.existeActivo()) {
             this.presentAlert("El activo ya existe");

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Búsqueda de activo</ion-title>
+    <ion-title>Crear/Editar Activo</ion-title>
     <ion-buttons slot="start">
       <ion-back-button color="primary" defaultHref="/consultar"></ion-back-button>
     </ion-buttons>
@@ -23,11 +23,11 @@
           <ion-col size="12" class="ion-no-padding">
             <ion-list>
               <ion-item lines="full">
-                <ion-select aria-label="fruit" placeholder="Seleccione"
+                <ion-select aria-label="fruit" placeholder="Seleccione" [compareWith]="compareFn" (ionChange)="onChange($event)"
                 formControlName="marca">
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
+                <ion-select-option *ngFor="let marca of marcas" [value]="marca">
+                  {{marca.nombre}}
+                </ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-list>
@@ -40,11 +40,11 @@
           <ion-col size="12" class="ion-no-padding">
             <ion-list>
               <ion-item lines="full">
-                <ion-select aria-label="fruit" placeholder="Seleccione"
+                <ion-select aria-label="fruit" placeholder="Seleccione" [compareWith]="compareFn"
                 formControlName="modelo">
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
+                  <ion-select-option *ngFor="let modeloIt of modeloSelect" [value]="modeloIt">
+                    {{modeloIt.nombre}}
+                  </ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-list>
@@ -59,9 +59,9 @@
               <ion-item lines="full">
                 <ion-select aria-label="fruit" placeholder="Seleccione"
                 formControlName="localidad">
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
+                  <ion-select-option value="Santiago">Santiago</ion-select-option>
+                  <ion-select-option value="Concepción">Concepción</ion-select-option>
+                  <ion-select-option value="Valparaíso">Valparaíso</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-list>
@@ -87,7 +87,7 @@
           <ion-col size="12" class="ion-no-padding">
             <ion-list>
               <ion-item lines="full">
-                <ion-input type="number" placeholder="Ingrese serie"
+                <ion-input type="number" placeholder="Ingrese año de compra"
                 formControlName="anioCompra"></ion-input>
               </ion-item>
             </ion-list>
@@ -100,7 +100,7 @@
           <ion-col size="12" class="ion-no-padding">
             <ion-list>
               <ion-item lines="full">
-                <ion-input type="text" placeholder="Ingrese serie"
+                <ion-input type="text" placeholder="Ingrese asignado"
                 formControlName="asignado"></ion-input>
               </ion-item>
             </ion-list>
@@ -113,7 +113,7 @@
           <ion-col size="12" class="ion-no-padding">
             <ion-list>
               <ion-item lines="full">
-                <ion-input type="text" placeholder="Ingrese serie"
+                <ion-input type="text" placeholder="Ingrese cargo"
                 formControlName="cargo"></ion-input>
               </ion-item>
             </ion-list>
@@ -126,7 +126,7 @@
           <ion-col size="12" class="ion-no-padding">
             <ion-list>
               <ion-item lines="full">
-                <ion-input type="text" placeholder="Ingrese serie"
+                <ion-input type="text" placeholder="Ingrese nombre empleado"
                 formControlName="nombreEmpleado"></ion-input>
               </ion-item>
             </ion-list>
@@ -145,8 +145,4 @@
       </ion-row>
     </ion-grid>
   </ion-card>
-  <pre>
-    {{ formulario.value | json }}
-    {{ formulario.status | json }}
-  </pre>
 </ion-content>
